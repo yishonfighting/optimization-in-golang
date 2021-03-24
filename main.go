@@ -1,14 +1,18 @@
 package main
 
-import "yishon.github.com/optimization-in-golang/dealFunc"
+import (
+	"yishon.github.com/optimization-in-golang/dealFunc"
+)
 
 func main() {
 
+	//pprof open code
+	//cpuProfile, _ := os.Create("cpu_profile")
+	//pprof.StartCPUProfile(cpuProfile)
+	//defer pprof.StopCPUProfile()
+
 
 	//待优化的原生func
-	// run result:
-	//"moby.txt": 428544 words
-	//go run main.go moby.txt  1.02s user 1.17s system 106% cpu 2.060 total
 	dealFunc.Func1()
 
 	//优化一版的func
