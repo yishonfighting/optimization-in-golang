@@ -14,3 +14,4 @@ go run main.go moby.txt  1.02s user 1.17s system 106% cpu 2.060 total
 ```
 针对一个42W数量的文本进行字数的统计，花了1S，直观感觉貌似效率一般般？会是什么原因呢？
 针对代码做了pprof 的CPU分析:
+![func1](https://github.com/yishonfighting/optimization-in-golang/blob/master/dealFunc/pic/1616637428774.jpg)
