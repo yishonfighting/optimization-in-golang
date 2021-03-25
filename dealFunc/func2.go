@@ -8,6 +8,8 @@ import (
 	"unicode"
 )
 
+var buf [1]byte
+
 func Func2() {
 	f, err := os.Open(os.Args[1])
 	if err != nil {
@@ -37,7 +39,6 @@ func Func2() {
 
 
 func readByte2(r io.Reader) (rune, error) {
-	var buf [1]byte
 	_, err := r.Read(buf[:])
 	return rune(buf[0]), err
 }
