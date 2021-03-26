@@ -8,6 +8,7 @@ func1 : 原生的处理逻辑,使用简单的时间处理分析
 time go run main.go moby.txt
 ```
 结果如下：
+
 ```
 "moby.txt": 428544 words
 go run main.go moby.txt  1.02s user 1.17s system 106% cpu 2.060 total
@@ -19,6 +20,7 @@ go run main.go moby.txt  1.02s user 1.17s system 106% cpu 2.060 total
 ![func1](https://github.com/yishonfighting/optimization-in-golang/blob/master/dealFunc/pic/1616637428774.jpg)
 
 98%的处理时间都花在系统调用都Read()上，与此同时，发现func1 alloc了*mheap，可能在执行时间效率上暂时看不出来，但是我们看看执行都内存占用,运行的时候申请了跟文件差不多大小的内存：
+
 ![func1 mem](https://github.com/yishonfighting/optimization-in-golang/blob/master/dealFunc/pic/mem.jpg)
 
 ---
@@ -28,11 +30,13 @@ go run main.go moby.txt  1.02s user 1.17s system 106% cpu 2.060 total
 2. 另外一个是内存逃逸隐患的优化。
 
 使用func2之后的CPU/内存分析：
+
 ```
 go run main.go moby.txt  0.29s user 0.17s system 59% cpu 0.767 total
 
 ```
-处理时间提升到了0.29S
+
+处理时间提升到了0.29S，整体的内存占用波动也就是内存逃逸也解决了
 
 ![func2 cpu](https://github.com/yishonfighting/optimization-in-golang/blob/master/dealFunc/pic/cpu2.jpg)
 
